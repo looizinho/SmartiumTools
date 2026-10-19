@@ -1,0 +1,18 @@
+//
+//  Alare.swift
+//  Alare
+//
+//  Created by Cizzuk on 2026/02/18.
+//
+
+import SwiftUI
+
+@main
+struct Alare: App {
+    var body: some Scene {
+        WindowGroup {
+            MainView()
+                .scrollDismissesKeyboard(.interactively)
+        }
+    }
+}

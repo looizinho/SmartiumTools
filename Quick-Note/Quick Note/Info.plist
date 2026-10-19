@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>dev.smartium.tools.cbnote</string>
+				<string>cbnote</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.dev.smartium.tools.cbnote</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>Quick Note</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>Any</string>
+		</dict>
+	</dict>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>camera</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_LaunchCamera</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>dev.smartium.tools.cbnote.HomeShortcut.LaunchCamera</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>document.on.clipboard</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_PasteFromClipboard</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>dev.smartium.tools.cbnote.HomeShortcut.PasteFromClipboard</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>square.and.pencil</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_AddNewNote</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>dev.smartium.tools.cbnote.HomeShortcut.AddNewNote</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>waveform.badge.microphone</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_StartRecording</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>dev.smartium.tools.cbnote.HomeShortcut.StartRecording</string>
+		</dict>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+</dict>
+</plist>

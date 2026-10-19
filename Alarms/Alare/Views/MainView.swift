@@ -1,0 +1,267 @@
+//
+//  MainView.swift
+//  Alare
+//
+//  Created by Cizzuk on 2026/02/18.
+//
+
+import AlarmKit
+import SwiftUI
+import UniformTypeIdentifiers
+
+struct MainView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    
+    @StateObject private var register = AlarmRegister.shared
+    @StateObject private var waManager = WakeupActionManager.shared
+    @StateObject private var wcManager = WakeupCheckManager.shared
+    @StateObject private var vm = MainViewModel()
+    
+    @State private var showCustomSoundImporter = false
+    @State private var showSnoozeIntervalPicker = false
+    private let snoozeIntervalList = Array(1...30)
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                // MARK: Header and Time
+                Section {} header: {
+                    HStack {
+                        Text("Alare")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.largeTitle)
+                            .bold()
+                            .accessibilityAddTraits(.isHeader)
+                        Spacer()
+                        Toggle("Turn on Alarm", isOn: $vm.draft.isEnabled)
+                            .tint(.accent)
+                            .disabled(AlarmManager.shared.authorizationState == .denied)
+                            .labelsHidden()
+                    }
+                    .foregroundStyle(.primary)
+                    .padding(.top, 30)
+                } footer: {
+                    VStack {
+                        DatePicker("Time", selection: $vm.timeSelection, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                            .frame(maxWidth: .infinity)
+                        if AlarmManager.shared.authorizationState == .denied {
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text("Alarm permission is not granted. Please enable it in Settings to use Alare.")
+                                if let url = URL(string: UIApplication.openSettingsURLString) {
+                                    Button(action: { UIApplication.shared.open(url) }) {
+                                        Text("Open Settings...")
+                                    }
+                                }
+                            }
+                            .font(.footnote)
+                        }
+                    }
+                    .padding(.bottom, 15)
+                }
+                
+                // MARK: Wake-up Action Button
+                if let nextSnooze = register.registereds.nextSnooze {
+                    Section {} header: {
+                        Label("Alarm is Snoozing", systemImage: "zzz")
+                            .foregroundStyle(.primary)
+                    } footer: {
+                        VStack(alignment: .center, spacing: 10) {
+                            Button(action: { vm.startWakeupAction() }) {
+                                HStack(alignment: .center, spacing: 10) {
+                                    Image("bolt.alare")
+                                        .font(.title)
+                                    Text("Start Wake-up Action")
+                                        .bold()
+                                        .padding(.vertical, 10)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal, 10)
+                            }
+                            .buttonStyle(.glassProminent)
+                            .tint(.dropblue)
+                            .foregroundStyle(.white)
+                            
+                            if !vm.draft.isHardMode,
+                               case .fixed(let date) = nextSnooze.schedule {
+                                Text("Next alarm is at \(date.formatted(date: .omitted, time: .shortened))")
+                                    .font(.footnote)
+                            }
+                        }
+                        .padding(.bottom, 30)
+                    }
+                }
+                
+                //  MARK: Wake-up Check Button
+                if let wakeupCheckStartTime = register.registereds.wakeupCheckStartTime {
+                    // Available before 10 seconds
+                    if wakeupCheckStartTime.timeIntervalSinceNow > 10 {
+                        Section {} footer: {
+                            HStack(alignment: .center, spacing: 10) {
+                                Label("Wake-up Check notification will soon be sent.", systemImage: "checkmark")
+                                    .foregroundStyle(.primary)
+                                    .font(.headline)
+                            }
+                            .padding(.bottom, 30)
+                        }
+                    } else {
+                        Section {} footer: {
+                            Button(action: { vm.completeWakeupCheck() }) {
+                                HStack(alignment: .center, spacing: 10) {
+                                    Image("checkmark.alare")
+                                        .font(.title)
+                                    Text("Complete Wake-up Check")
+                                        .bold()
+                                        .padding(.vertical, 10)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal, 10)
+                            }
+                            .buttonStyle(.glassProminent)
+                            .tint(.dropblue)
+                            .foregroundStyle(.white)
+                            .padding(.bottom, 30)
+                        }
+                    }
+                }
+                
+                // MARK: Repeat
+                Section("Repeat") {
+                    WeekdaysView(repeats: $vm.draft.repeats)
+                }
+                
+                // MARK: Wake-up Action & Check
+                Section {
+                    NavigationLink(destination: WakeupActionSettingsView()) {
+                        HStack {
+                            Label("Wake-up Action", systemImage: "bolt.fill")
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            Text(waManager.settings.selected.displayName)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    NavigationLink(destination: WakeupCheckSettingsView()) {
+                        HStack {
+                            Label("Wake-up Check", systemImage: "checkmark")
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            Text(wcManager.settings.isEnabled ? "On" : "Off")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+                
+                Section {
+                    HStack {
+                        Text("Snooze Duration")
+                        Spacer()
+                        Button(action: { withAnimation { showSnoozeIntervalPicker.toggle() } }) {
+                            if vm.draft.isHardMode {
+                                Text("Disabled")
+                            } else {
+                                Text("\(vm.draft.snoozeInterval) min")
+                                    .font(.default.monospacedDigit())
+                            }
+                        }
+                        .disabled(vm.draft.isHardMode)
+                    }
+                    
+                    if showSnoozeIntervalPicker {
+                        Picker("Snooze Duration", selection: $vm.draft.snoozeInterval) {
+                            ForEach(snoozeIntervalList, id: \.self) { interval in
+                                Text("\(interval) min").tag(interval)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                    }
+                    
+                    Picker("Sound", selection: $vm.draft.sound) {
+                        ForEach(AlarmSound.allCases, id: \.self) { sound in
+                            Text(sound.displayName).tag(sound)
+                        }
+                    }
+                    if vm.draft.sound == .custom {
+                        Button(action: { showCustomSoundImporter = true }) {
+                            Text("Import Custom Sound")
+                        }
+                    }
+                    
+                    Toggle("Hard Mode", isOn: $vm.draft.isHardMode)
+                        .tint(.accent)
+                        .onChange(of: vm.draft.isHardMode) {
+                            withAnimation { showSnoozeIntervalPicker = false }
+                        }
+                } header: {
+                    Text("Options")
+                } footer: {
+                    if vm.draft.isHardMode {
+                        Text("While Hard Mode is on, the snooze button will be hidden, and the alarm will continue to ring until you complete the Wake-up Action.")
+                    }
+                }
+                
+                Section {
+                    NavigationLink(destination: AboutView()) {
+                        Label("About", systemImage: "info.circle")
+                            .foregroundStyle(.primary)
+                    }
+                    if UIApplication.shared.supportsAlternateIcons {
+                        NavigationLink(destination: ChangeIconView()) {
+                            Label("Change App Icon", systemImage: "app.dashed")
+                                .foregroundStyle(.primary)
+                        }
+                    }
+                }
+                
+                #if DEBUG && !targetEnvironment(simulator)
+                Section {
+                    Button(action: {
+                        Task { await register.testAlarm() }
+                    }) {
+                        Text("Test Alarm")
+                    }
+                }
+                #endif
+            } // List
+            .animation(.default, value: register.registereds.nextSnooze != nil)
+            .animation(.default, value: register.registereds.wakeupCheckStartTime)
+            .animation(.default, value: vm.draft.sound)
+            .animation(.default, value: vm.draft.isHardMode)
+            .scrollContentBackground(.hidden)
+            .background(NightGradient.ignoresSafeArea())
+        } // NavigationStack
+        .fileImporter(
+            isPresented: $showCustomSoundImporter,
+            allowedContentTypes: [.audio],
+            allowsMultipleSelection: false
+        ) { result in
+            vm.importCustomSoundHandler(result)
+        }
+        .fullScreenCover(item: $vm.doingWakeupAction) { action in
+            WakeupActionExecutionView(action: action) {
+                vm.completeWakeupAction()
+            } onCancel: {
+                vm.doingWakeupAction = nil
+            }
+        }
+        // MARK: - Events
+        .onReceive(NotificationCenter.default.publisher(for: .shouldStartWakeupAction)) { _ in
+            vm.startWakeupAction()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .alarmSettingsDidChangeOutsideMainApp)) { _ in
+            vm.syncDraft()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .focusFilterDidChange)) { _ in
+            vm.syncFocusFilter()
+        }
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+            vm.handleContinueUserActivity(activity: activity)
+        }
+        .onOpenURL { url in
+            vm.handleOpenURL(url: url)
+        }
+        .onAppear { vm.onAppear() }
+        .onChange(of: scenePhase) { vm.onChange(scenePhase: scenePhase) }
+    }
+}

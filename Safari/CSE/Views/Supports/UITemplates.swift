@@ -1,0 +1,106 @@
+//
+//  UITemplates.swift
+//  CSE
+//
+//  Created by Cizzuk on 2025/05/25.
+//
+
+import SwiftUI
+
+class UITemplates {
+    struct IconLabel: View {
+        @Environment(\.dynamicTypeSize) var dynamicTypeSize
+        
+        let icon: String
+        let text: String.LocalizationValue
+        
+        var body: some View {
+            HStack {
+                if dynamicTypeSize <= .xxxLarge {
+                    Image(systemName: icon)
+                        .frame(width: 20.0, alignment: .center)
+                        .accessibilityHidden(true)
+                    Spacer().frame(width: 10.0)
+                }
+                Text(String(localized: text))
+            }
+        }
+    }
+    
+    struct PresetSEButton: View {
+        let action: () -> Void
+        let cse: CSEDataManager.CSEData
+        
+        var body: some View {
+            Button {
+                action()
+            } label: {
+                VStack(alignment: .leading) {
+                    Text(cse.name)
+                        .bold()
+                    Text(cse.url)
+                        .lineLimit(1)
+                        .foregroundStyle(.secondary)
+                        .font(.subheadline)
+                }
+            }
+            .accessibilityLabel(cse.name)
+            #if !os(visionOS)
+            .foregroundStyle(Color(.label))
+            #endif
+        }
+    }
+    
+    struct HeaderSection: View {
+        let title: String.LocalizationValue
+        let description: String.LocalizationValue
+        
+        var body: some View {
+            Section {} header: {
+                Text(String(localized: title))
+                    .textCase(.none)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.primary)
+                    .padding(.top, 35)
+            } footer: {
+                Text(String(localized: description))
+                    .font(.body)
+                    .foregroundStyle(.primary)
+                    .padding(.bottom, 20)
+            }
+        }
+    }
+    
+    struct TutorialButton: View {
+        let action: () -> Void
+        let text: String.LocalizationValue
+        
+        var body: some View {
+            Button(action: action) {
+                Text(String(localized: text))
+                    .bold()
+                    .padding()
+            }
+            .glassEffectTutorialButton()
+        }
+    }
+    
+    struct OpenSettingsButton: View {
+        var body: some View {
+            #if !targetEnvironment(macCatalyst)
+            // Open Safari Settings Button
+            Button(action: {
+                if let url = URL(string: "App-Prefs:com.apple.mobilesafari") {
+                    UIApplication.shared.open(url)
+                }
+            }) {
+                UITemplates.IconLabel(icon: "gear", text: "Open Settings")
+                    #if !os(visionOS)
+                    .foregroundStyle(.accent)
+                    #endif
+            }
+            #endif
+        }
+    }
+}

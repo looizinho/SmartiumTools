@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://www.sogou.com/web*query=*",
+            "resourceTypes": ["main_frame"]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "*://m.sogou.com/web/sl*keyword=*",
+            "resourceTypes": ["main_frame"]
+        }
+    }
+]

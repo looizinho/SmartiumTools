@@ -1,0 +1,44 @@
+{
+  "features" : [
+    "specular-location"
+  ],
+  "fill" : "automatic",
+  "groups" : [
+    {
+      "blur-material" : null,
+      "layers" : [
+        {
+          "image-name-specializations" : [
+            {
+              "value" : "pride-light.png"
+            },
+            {
+              "appearance" : "dark",
+              "value" : "pride-dark.png"
+            },
+            {
+              "appearance" : "tinted",
+              "value" : "pride-dark.png"
+            }
+          ],
+          "name" : "clock"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "specular" : "inside",
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.25
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

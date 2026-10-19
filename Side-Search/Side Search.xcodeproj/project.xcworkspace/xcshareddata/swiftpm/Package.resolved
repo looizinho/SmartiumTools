@@ -1,0 +1,69 @@
+{
+  "originHash" : "8128b144639aa829d36c514bc10b4fadd307231ab88edeff3d617117ac714309",
+  "pins" : [
+    {
+      "identity" : "claudeforfoundationmodels",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/anthropics/ClaudeForFoundationModels.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0262e1a766c461a4268dcec656eca95dd74cebf8"
+      }
+    },
+    {
+      "identity" : "swift-concurrency-extras",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-concurrency-extras",
+      "state" : {
+        "revision" : "8a4260f7373493435bd21194585c95b72bfdd401",
+        "version" : "1.4.3"
+      }
+    },
+    {
+      "identity" : "swift-merge-codable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cizzuk/swift-merge-codable",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8fadd7727a9b068b4cb34e927dc10dfd705951f8"
+      }
+    },
+    {
+      "identity" : "swift-sidebridge",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cizzuk/swift-sidebridge",
+      "state" : {
+        "revision" : "32b4df6c7a95a0b8775cd48cb576601133a0737f",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swiftui-math",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/swiftui-math",
+      "state" : {
+        "revision" : "0b5c2cfaaec8d6193db206f675048eeb5ce95f71",
+        "version" : "0.1.0"
+      }
+    },
+    {
+      "identity" : "swiftui-temporary-screen-curtain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cizzuk/swiftui-temporary-screen-curtain",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a27a803b47c69698c667a6e720a8781a4befb09e"
+      }
+    },
+    {
+      "identity" : "textual",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/textual",
+      "state" : {
+        "revision" : "01b51875a5406eefc95f52a058cb059e7bc94dc4",
+        "version" : "0.5.0"
+      }
+    }
+  ],
+  "version" : 3
+}

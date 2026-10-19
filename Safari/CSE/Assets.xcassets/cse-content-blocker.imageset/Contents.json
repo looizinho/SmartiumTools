@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cse-content-blocker.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

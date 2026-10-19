@@ -1,0 +1,29 @@
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+### Xcode ###
+.build/
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+### Swift Package Manager ###
+/.build/
+/.swiftpm/configuration/registries.json
+/.swiftpm/configuration/registries.json.bak
+
+### Miscellaneous ###
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM

@@ -1,0 +1,1217 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "%lld" : {
+      "shouldTranslate" : false
+    },
+    "%lld min" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld分"
+          }
+        }
+      }
+    },
+    "%lld Points" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Point"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld Points"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lldポイント"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld Points Left" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Point Left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld Points Left"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "あと%lldポイント"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld Taps" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tap"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld Taps"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lldタップ"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld Taps Left" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Tap Left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld Taps Left"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "あと%lldタップ"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "${toggle} Alare's Alarm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームを${toggle}"
+          }
+        }
+      }
+    },
+    "${toggle} Alare's Alarm ${state}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームを${state}に${toggle}"
+          }
+        }
+      }
+    },
+    "About" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "情報"
+          }
+        }
+      }
+    },
+    "Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクション"
+          }
+        }
+      }
+    },
+    "Actions" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アクション"
+          }
+        }
+      }
+    },
+    "After the Wake-up Action is completed, a notification will be sent to confirm whether you have actually woken up. If there is no response to the notification, the alarm will play again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床アクションの完了後に、もう一度本当に起きたかを確認する通知を送信します。通知に応答がない場合、再度アラームが再生されます。"
+          }
+        }
+      }
+    },
+    "Alare" : {
+      "shouldTranslate" : false
+    },
+    "Alare Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのコード"
+          }
+        }
+      }
+    },
+    "Alare's alarm will continue to snooze until you perform a Wake-up Action. To prevent oversleeping, select an action in advance that you believe will wake you up." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームは、起床アクションを行わない限りスヌーズし続けます。目が覚めると思うアクションをあらかじめ選択して、寝坊を防止しましょう。"
+          }
+        }
+      }
+    },
+    "Alarm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アラーム"
+          }
+        }
+      }
+    },
+    "Alarm is Snoozing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アラームはスヌーズ中です"
+          }
+        }
+      }
+    },
+    "Alarm permission is not granted. Please enable it in Settings to use Alare." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アラームが許可されていません。Alareを使用するには、設定で有効にしてください。"
+          }
+        }
+      }
+    },
+    "Attention" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アテンション"
+          }
+        }
+      }
+    },
+    "Camera access is denied. Please grant permission in Settings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラにアクセスする権限がありません。設定から許可してください。"
+          }
+        }
+      }
+    },
+    "Camera access is restricted." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラは制限されています。"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Cannot continue the action while the device is open. Please close the device completely." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスが開いている間はアクションを続行できません。デバイスを完全に閉じてください。"
+          }
+        }
+      }
+    },
+    "Change Alare's Alarm Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームの時刻を変更する"
+          }
+        }
+      }
+    },
+    "Change Alare's Alarm Time to ${time}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームの時刻を${time}に変更"
+          }
+        }
+      }
+    },
+    "Change App Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコンを変更"
+          }
+        }
+      }
+    },
+    "Changes the time of Alare's alarm." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームの時刻を変更します。"
+          }
+        }
+      }
+    },
+    "Cizzuk" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cizzuk"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cizzuk"
+          }
+        }
+      }
+    },
+    "Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コード"
+          }
+        }
+      }
+    },
+    "Code: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コード: %@"
+          }
+        }
+      }
+    },
+    "Complete Wake-up Check" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床チェックを完了する"
+          }
+        }
+      }
+    },
+    "Create New Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいコードを作成"
+          }
+        }
+      }
+    },
+    "Custom" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタム"
+          }
+        }
+      }
+    },
+    "Developer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デベロッパー"
+          }
+        }
+      }
+    },
+    "Disabled" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用不可"
+          }
+        }
+      }
+    },
+    "Drum Roll" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連打"
+          }
+        }
+      }
+    },
+    "Drum Roll the Screen to Wake Up!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面を連打してアラームを解除"
+          }
+        }
+      }
+    },
+    "Drum roll your fingers on the screen." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面をドラムロールするように何度もタップ。"
+          }
+        }
+      }
+    },
+    "Even without a Wake-up Action, running this shortcut will forcefully stop the current alarm and snooze." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床アクションを行わなくても、このショートカットを実行するとスヌーズを強制的に解除できます。"
+          }
+        }
+      }
+    },
+    "First you need to scan the code to use it for this action." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "はじめに、このアクションで使用するためのコードをスキャンする必要があります。"
+          }
+        }
+      }
+    },
+    "Good Morning" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おはようございます"
+          }
+        }
+      }
+    },
+    "Hailing" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あられ"
+          }
+        }
+      }
+    },
+    "Hard Mode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ハードモード"
+          }
+        }
+      }
+    },
+    "High" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高い"
+          }
+        }
+      }
+    },
+    "I'm Awake!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床を確認"
+          }
+        }
+      }
+    },
+    "Import Custom Sound" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カスタムサウンドをインポート"
+          }
+        }
+      }
+    },
+    "Incorrect code. Please try another code." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードが正しくありません。他のコードをお試しください。"
+          }
+        }
+      }
+    },
+    "It's easier to earn points by making large, slow movements with your device rather than quick, small shakes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスを小刻みにシェイクするよりも、大きくゆっくり動かすほうがポイントを獲得しやすくなります。"
+          }
+        }
+      }
+    },
+    "It's recommended to place the code away from the bed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードは寝室から離れた場所に置くことをおすすめします。"
+          }
+        }
+      }
+    },
+    "Just tap the button once." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタンを一回タップするだけ。"
+          }
+        }
+      }
+    },
+    "License" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "Medium" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中程度"
+          }
+        }
+      }
+    },
+    "MIT License\n\nCopyright (c) 2026 Cizzuk\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \n \nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE." : {
+      "shouldTranslate" : false
+    },
+    "Next alarm is at %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次のアラームは %@ です"
+          }
+        }
+      }
+    },
+    "Not Set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未設定"
+          }
+        }
+      }
+    },
+    "Notifications are not allowed. Wake-up Check notifications will not be sent." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知は許可されていません。 起床チェックの通知は送信されません。"
+          }
+        }
+      }
+    },
+    "Off" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オフ"
+          }
+        }
+      }
+    },
+    "On" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オン"
+          }
+        }
+      }
+    },
+    "Open Alare and start the Wake-up Action. The action will not start if the alarm is not snoozing." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareを開いて起床アクションを開始します。アラームがスヌーズしていない場合はアクションは開始されません。"
+          }
+        }
+      }
+    },
+    "Open Alare and Start Wake-up Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareを開いて起床アクションをはじめる"
+          }
+        }
+      }
+    },
+    "Open Settings..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定を開く…"
+          }
+        }
+      }
+    },
+    "Operation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作"
+          }
+        }
+      }
+    },
+    "Options" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オプション"
+          }
+        }
+      }
+    },
+    "Please close your device" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスを閉じてください"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        }
+      }
+    },
+    "Repeat" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繰り返し"
+          }
+        }
+      }
+    },
+    "Required Points" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必要なポイント数"
+          }
+        }
+      }
+    },
+    "Required Taps" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必要なタップ数"
+          }
+        }
+      }
+    },
+    "Ring Alarm After" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の間隔をあけてアラームを再生する"
+          }
+        }
+      }
+    },
+    "Scan a Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードをスキャン"
+          }
+        }
+      }
+    },
+    "Scan Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードをスキャン"
+          }
+        }
+      }
+    },
+    "Scan the code placed outside the bed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ベッドの外に置いたコードをスキャン。"
+          }
+        }
+      }
+    },
+    "Scan the Code to Wake Up!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードをスキャンしてアラームを解除"
+          }
+        }
+      }
+    },
+    "Scan to Set a New Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいコードをスキャンして設定"
+          }
+        }
+      }
+    },
+    "Selected" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択中"
+          }
+        }
+      }
+    },
+    "Send Notification After" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次の間隔をあけて通知を送信する"
+          }
+        }
+      }
+    },
+    "Sensitivity" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "感度"
+          }
+        }
+      }
+    },
+    "Set a Wake-up Action to stop the alarm." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アラームを止めるために使用する起床アクションを設定します。"
+          }
+        }
+      }
+    },
+    "Set Alare's Alarm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームを設定"
+          }
+        }
+      }
+    },
+    "Set Wake-up Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床アクションを設定"
+          }
+        }
+      }
+    },
+    "Set Wake-up Action to ${action}" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床アクションを${action}に設定"
+          }
+        }
+      }
+    },
+    "Sets a Wake-up Action to be used during this Focus." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この集中モード中に使用する起床アクションを設定します。"
+          }
+        }
+      }
+    },
+    "Snooze" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スヌーズ"
+          }
+        }
+      }
+    },
+    "Snooze %lld" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スヌーズ%lld回目"
+          }
+        }
+      }
+    },
+    "Snooze Duration" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スヌーズの間隔"
+          }
+        }
+      }
+    },
+    "Sound" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サウンド"
+          }
+        }
+      }
+    },
+    "Source" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソースコード"
+          }
+        }
+      }
+    },
+    "Start Wake-up Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床アクションをはじめる"
+          }
+        }
+      }
+    },
+    "State" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状態"
+          }
+        }
+      }
+    },
+    "Stop Current Alarm and Snooze Forcefully" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在のアラームとスヌーズを強制的に停止"
+          }
+        }
+      }
+    },
+    "Stop in Alare" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alare内で止める"
+          }
+        }
+      }
+    },
+    "System Default" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システムのデフォルト"
+          }
+        }
+      }
+    },
+    "Tap Button" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタンをタップ"
+          }
+        }
+      }
+    },
+    "Test Alarm" : {
+      "shouldTranslate" : false
+    },
+    "The selected Wake-up Action is not available." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択された起床アクションは利用できません。"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時刻"
+          }
+        }
+      }
+    },
+    "Toggle" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切り替える"
+          }
+        }
+      }
+    },
+    "Try This Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアクションを試す"
+          }
+        }
+      }
+    },
+    "Turn" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "変更"
+          }
+        }
+      }
+    },
+    "Turn Alare's alarm On or Off." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alareのアラームをオンまたはオフに変更します。"
+          }
+        }
+      }
+    },
+    "Turn on Alarm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アラームをオンにする"
+          }
+        }
+      }
+    },
+    "Use This Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアクションを使用する"
+          }
+        }
+      }
+    },
+    "UUID" : {
+      "shouldTranslate" : false
+    },
+    "Version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
+          }
+        }
+      }
+    },
+    "Wake-up Action" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床アクション"
+          }
+        }
+      }
+    },
+    "Wake-up Check" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床チェック"
+          }
+        }
+      }
+    },
+    "Wake-up Check (Beta)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床チェック (ベータ)"
+          }
+        }
+      }
+    },
+    "Wake-up Check notification will soon be sent." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起床チェックの通知が後ほど送信されます"
+          }
+        }
+      }
+    },
+    "Wave Device" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスを振る"
+          }
+        }
+      }
+    },
+    "Wave the device slowly and broadly like a flag." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "旗を振るように、デバイスを大きくゆっくり振る。"
+          }
+        }
+      }
+    },
+    "Wave the Device to Wake Up!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスを振ってアラームを解除"
+          }
+        }
+      }
+    },
+    "When performing this action, please hold your device securely and be aware of your surroundings." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアクションを行う際は、デバイスをしっかり持って、周囲の状況に注意しながら行なってください。"
+          }
+        }
+      }
+    },
+    "While Hard Mode is on, the snooze button will be hidden, and the alarm will continue to ring until you complete the Wake-up Action." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ハードモードがオンの間は、スヌーズボタンが表示されなくなり、起床アクションを完了するまでアラームが鳴り続けるようになります。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

@@ -1,0 +1,27 @@
+//
+//  ActivateIntent.swift
+//  Side Search
+//
+//  Created by Cizzuk on 2025/12/24.
+//
+
+import AppIntents
+
+@AppIntent(schema: .assistant.activate)
+struct ActivateIntent: AppIntent {
+    static let title: LocalizedStringResource = "Start Assistant"
+    static let description: LocalizedStringResource = "Start the Side Search assistant."
+    static let isDiscoverable = true
+    static var supportedModes: IntentModes = .foreground
+    
+    @MainActor
+    static func setShouldBackground(_ value: Bool) {
+        Self.supportedModes = value ? .background : .foreground
+    }
+    
+    @MainActor
+    func perform() async throws -> some IntentResult {
+        NotificationCenter.default.post(name: .assistantDidActivate, object: nil)
+        return .result()
+    }
+}

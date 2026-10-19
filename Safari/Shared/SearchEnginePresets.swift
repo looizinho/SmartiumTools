@@ -1,0 +1,333 @@
+//
+//  SearchEnginePresets.swift
+//  CSE
+//
+//  Created by Cizzuk on 2025/04/15.
+//
+
+import Foundation
+
+class SearchEnginePresets {
+    // Helpers
+    private static let currentRegion = Locale.current.region?.identifier
+    private static let preferredLanguages = Locale.preferredLanguages
+    
+    private static func containsLanguage(_ languageCode: String) -> Bool {
+        return preferredLanguages.contains { language in
+            if language.hasPrefix(languageCode + "-") {
+                return true
+            }
+            let locale = Locale(identifier: language)
+            return locale.language.languageCode?.identifier == languageCode
+        }
+    }
+    
+    static var quickCSEs: [String: CSEDataManager.CSEData] {
+        let wikiLangsList: [String] = [
+            // 下記ページで (純記事数 >= 500,000 && 点数B >= 40.0) の言語版のみを採用する
+            // https://ja.wikipedia.org/wiki/Wikipedia:全言語版の統計#各言語版ウィキペディア
+            // 1M
+            "en", "de", "fr", "sv", "nl", "es", "ru", "it", "pl", "zh", "ja", "uk", "ar", "vi", "pt", "fa",
+            // 500K
+            "ca", "id", "ko", "sr", "tr", "no", "fi", "cs", "hu", "ro",
+        ]
+        var wikiLang: String = "en"
+        for language in preferredLanguages {
+            let languageCode = language.components(separatedBy: "-").first ?? language
+            if wikiLangsList.contains(languageCode) {
+                wikiLang = languageCode
+                break
+            }
+        }
+        
+        var baseCSEs = [
+            "g": CSEDataManager.CSEData(
+                name: "Google",
+                url: "https://www.google.com/search?q=%s&client=safari",
+            ),
+            "b": CSEDataManager.CSEData(
+                name: "Bing",
+                url: "https://www.bing.com/search?q=%s",
+            ),
+            "y": CSEDataManager.CSEData(
+                name: "Yahoo",
+                url: "https://search.yahoo.com/search?p=%s",
+            ),
+            "ddg": CSEDataManager.CSEData(
+                name: "DuckDuckGo",
+                url: "https://duckduckgo.com/?q=%s",
+                maxQueryLength: 500,
+            ),
+            "eco": CSEDataManager.CSEData(
+                name: "Ecosia",
+                url: "https://www.ecosia.org/search?q=%s",
+            ),
+            "sp": CSEDataManager.CSEData(
+                name: "Startpage",
+                url: "https://www.startpage.com/sp/search?query=%s",
+            ),
+            "br": CSEDataManager.CSEData(
+                name: "Brave Search",
+                url: "https://search.brave.com/search?q=%s",
+            ),
+            "yt": CSEDataManager.CSEData(
+                name: "YouTube",
+                url: "https://www.youtube.com/results?search_query=%s",
+            ),
+            "gh": CSEDataManager.CSEData(
+                name: "GitHub",
+                url: "https://github.com/search?q=%s",
+            ),
+            "wiki": CSEDataManager.CSEData(
+                name: "Wikipedia (" + wikiLang + ")",
+                url: "https://" + wikiLang + ".wikipedia.org/w/index.php?title=Special:Search&search=%s",
+            ),
+            "wbm": CSEDataManager.CSEData(
+                name: "Wayback Machine",
+                url: "https://web.archive.org/web/*/%s",
+                disablePercentEncoding: true,
+            ),
+        ]
+        
+        if currentRegion != "CN" {
+            baseCSEs["gpt"] = CSEDataManager.CSEData(
+                name: "ChatGPT",
+                url: "https://chatgpt.com/?q=%s",
+            )
+        }
+        
+        if preferredLanguages.first == "ja-JP" {
+            baseCSEs["y"] = CSEDataManager.CSEData(
+                name: "Yahoo! JAPAN",
+                url: "https://search.yahoo.co.jp/search?p=%s",
+            )
+        }
+        
+        if currentRegion == "CN" || containsLanguage("zh-Hans") {
+            baseCSEs["baidu"] = CSEDataManager.CSEData(
+                name: "百度",
+                url: "https://www.baidu.com/s?wd=%s",
+            )
+            baseCSEs["weibo"] = CSEDataManager.CSEData(
+                name: "微博",
+                url: "https://s.weibo.com/weibo?q=%s",
+            )
+        }
+        
+        if currentRegion == "FR" {
+            baseCSEs["qwant"] = CSEDataManager.CSEData(
+                name: "Qwant",
+                url: "https://www.qwant.com/?q=%s",
+            )
+        }
+        
+        if currentRegion == "KR" || containsLanguage("ko") {
+            baseCSEs["naver"] = CSEDataManager.CSEData(
+                name: "NAVER",
+                url: "https://search.naver.com/search.naver?query=%s",
+            )
+        }
+        
+        if currentRegion == "VN" || containsLanguage("vi") {
+            baseCSEs["coc"] = CSEDataManager.CSEData(
+                name: "Cốc Cốc",
+                url: "https://coccoc.com/search#query=%s",
+            )
+        }
+        
+        if currentRegion == "RU" || containsLanguage("ru") {
+            baseCSEs["yandex"] = CSEDataManager.CSEData(
+                name: "Яндекс",
+                url: "https://yandex.ru/search/?text=%s",
+            )
+        }
+        
+        return baseCSEs
+    }
+    
+    static var popCSEList: [CSEDataManager.CSEData] {
+        var popCSEs: [CSEDataManager.CSEData] = [
+            CSEDataManager.CSEData(
+                name: "Startpage",
+                keyword: "sp",
+                url: "https://www.startpage.com/sp/search?query=%s",
+            ),
+            CSEDataManager.CSEData(
+                name: "Brave Search",
+                keyword: "br",
+                url: "https://search.brave.com/search?q=%s",
+            ),
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo Lite",
+                keyword: "lite",
+                url: "https://lite.duckduckgo.com/lite?q=%s",
+                maxQueryLength: 500,
+            ),
+            CSEDataManager.CSEData(
+                name: "Kagi",
+                keyword: "kagi",
+                url: "https://kagi.com/search?q=%s",
+            ),
+        ]
+        
+        // Add region-specific search engines
+        if currentRegion == "FR" {
+            popCSEs.append(CSEDataManager.CSEData(
+                name: "Qwant",
+                keyword: "qwant",
+                url: "https://www.qwant.com/?q=%s",
+            ))
+        }
+        
+        if currentRegion == "KR" || containsLanguage("ko") {
+            popCSEs.append(CSEDataManager.CSEData(
+                name: "NAVER",
+                keyword: "naver",
+                url: "https://search.naver.com/search.naver?query=%s",
+            ))
+        }
+        
+        if currentRegion == "VN" || containsLanguage("vi") {
+            popCSEs.append(CSEDataManager.CSEData(
+                name: "Cốc Cốc",
+                keyword: "coc",
+                url: "https://coccoc.com/search#query=%s",
+            ))
+        }
+        
+        return popCSEs
+    }
+    
+    static var noaiCSEList: [CSEDataManager.CSEData] {
+        let noaiCSEs: [CSEDataManager.CSEData] = [
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo No AI",
+                keyword: "noai",
+                url: "https://noai.duckduckgo.com/?q=%s",
+                maxQueryLength: 500,
+            ),
+            CSEDataManager.CSEData(
+                name: "Google &udm=14",
+                keyword: "g",
+                url: "https://www.google.com/search?udm=14&q=%s&client=safari",
+            ),
+        ]
+        
+        return noaiCSEs
+    }
+        
+    static var aiCSEList: [CSEDataManager.CSEData] {
+        #if targetEnvironment(simulator)
+        return []
+        #endif
+        
+        var aiCSEs: [CSEDataManager.CSEData] = []
+        if currentRegion != "CN" {
+            aiCSEs.append(contentsOf: [
+                // Search Engine (Mode)
+                CSEDataManager.CSEData(
+                    name: "ChatGPT",
+                    keyword: "gpt",
+                    url: "https://chatgpt.com/?q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Duck.ai",
+                    keyword: "duckai",
+                    url: "https://duck.ai/chat?home=1&prompt=1&q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Google AI Mode",
+                    keyword: "gai",
+                    url: "https://google.com/?udm=50&q=%s",
+                ),
+                CSEDataManager.CSEData(
+                    name: "Copilot Search",
+                    keyword: "copilot",
+                    url: "https://www.bing.com/copilotsearch?q=%s",
+                ),
+            ])
+            
+            if currentRegion == "JP" || containsLanguage("ja") {
+                aiCSEs.append(CSEDataManager.CSEData(
+                    name: "Agent i",
+                    keyword: "yai",
+                    url: "https://search.yahoo.co.jp/chat/s/n?q=%s&s=request_parameter_question",
+                ))
+            }
+            
+            // Normal AI Chat
+            aiCSEs.append(contentsOf: [
+                CSEDataManager.CSEData(
+                    name: "Claude",
+                    keyword: "claude",
+                    url: "https://claude.ai/new?q=%s",
+                ),
+            ])
+        }
+        
+        return aiCSEs
+    }
+    
+    static var safariCSEList: [CSEDataManager.CSEData] {
+        var normalCSEs: [CSEDataManager.CSEData] = []
+        
+        let localizedYahoo: CSEDataManager.CSEData
+        if preferredLanguages.first == "ja-JP" {
+            localizedYahoo = CSEDataManager.CSEData(
+                name: "Yahoo! JAPAN",
+                keyword: "y",
+                url: "https://search.yahoo.co.jp/search?p=%s",
+            )
+        } else {
+            localizedYahoo = CSEDataManager.CSEData(
+                name: "Yahoo",
+                keyword: "y",
+                url: "https://search.yahoo.com/search?p=%s",
+            )
+        }
+        
+        normalCSEs.append(contentsOf:[
+            CSEDataManager.CSEData(
+                name: "Google",
+                keyword: "g",
+                url: "https://www.google.com/search?q=%s&client=safari",
+            ),
+            CSEDataManager.CSEData(
+                name: "Bing",
+                keyword: "b",
+                url: "https://www.bing.com/search?q=%s",
+            ),
+            localizedYahoo,
+            CSEDataManager.CSEData(
+                name: "DuckDuckGo",
+                keyword: "ddg",
+                url: "https://duckduckgo.com/?q=%s",
+                maxQueryLength: 500,
+            ),
+            CSEDataManager.CSEData(
+                name: "Ecosia",
+                keyword: "eco",
+                url: "https://www.ecosia.org/search?q=%s",
+            ),
+        ])
+        
+        if currentRegion == "CN" || containsLanguage("zh-Hans") {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "百度",
+                keyword: "baidu",
+                url: "https://www.baidu.com/s?wd=%s",
+            ))
+        }
+        
+        if currentRegion == "RU" || containsLanguage("ru") {
+            normalCSEs.append(CSEDataManager.CSEData(
+                name: "Яндекс",
+                keyword: "yandex",
+                url: "https://yandex.ru/search/?text=%s",
+            ))
+        }
+        
+        return normalCSEs
+    }
+        
+}

@@ -1,0 +1,131 @@
+//
+//  RecorderActivityWidget.swift
+//  Quick Note Widget Extension
+//
+//  Created by Cizzuk on 2026/03/03.
+//
+
+import ActivityKit
+import AppIntents
+import SwiftUI
+import WidgetKit
+
+struct RecorderActivityWidget: Widget {
+    static let kind = "dev.smartium.tools.cbnote.WidgetExtension.RecorderActivityWidget"
+    
+    struct IconImage: View {
+        var size: CGFloat? = nil
+
+        var body: some View {
+            Image("cbnote")
+                .resizable()
+                .scaledToFit()
+                .frame(width: size, height: size)
+                .padding(3.5)
+                .accessibilityLabel("Quick Note")
+                .foregroundStyle(.white)
+        }
+    }
+    
+    struct RecordImage: View {
+        var size: CGFloat? = nil
+
+        var body: some View {
+            Image(systemName: "record.circle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: size, height: size)
+                .padding(3)
+                .accessibilityLabel("Recording")
+                .foregroundStyle(.red)
+        }
+    }
+    
+    struct DescriptionText: View {
+        var showSubtitle: Bool = true
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text("Recording")
+                    .font(.headline)
+                    .bold()
+                    .foregroundStyle(.white)
+                if showSubtitle {
+                    Text("Quick Note")
+                        .font(.subheadline)
+                        .foregroundStyle(.white.opacity(0.7))
+                }
+            }
+        }
+    }
+    
+    struct FinishRecordButton: View {
+        var body: some View {
+            Button(intent: FinishRecordButtonIntent()) {
+                Label("Finish Record", systemImage: "stop.fill")
+                    .labelStyle(.iconOnly)
+                    .font(.system(size: 30, weight: .bold))
+                    .padding(5)
+            }
+            .tint(.red)
+            .padding(5)
+        }
+    }
+    
+    struct MainActivityView: View {
+        @Environment(\.activityFamily) var activityFamily
+        
+        var body: some View {
+            switch activityFamily {
+            case .small:
+                HStack(spacing: 10) {
+                    IconImage(size: 30)
+                    DescriptionText(showSubtitle: false)
+                }
+            case .medium:
+                HStack(spacing: 10) {
+                    IconImage(size: 40)
+                        .padding(.leading, 10)
+                    DescriptionText()
+                    Spacer()
+                    FinishRecordButton()
+                }
+                .padding()
+            @unknown default:
+                EmptyView()
+            }
+        }
+    }
+    
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: RecorderActivityAttributes.self) { context in
+            MainActivityView()
+                .activitySystemActionForegroundColor(.red)
+            
+        } dynamicIsland: { context in
+            DynamicIsland {
+                DynamicIslandExpandedRegion(.leading) {
+                    IconImage(size: 50)
+                        .padding(5)
+                        .frame(maxHeight: .infinity)
+                }
+                DynamicIslandExpandedRegion(.center) {
+                    DescriptionText()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                DynamicIslandExpandedRegion(.trailing) {
+                    FinishRecordButton()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+            } compactLeading: {
+                IconImage()
+            } compactTrailing: {
+                RecordImage()
+            } minimal: {
+                IconImage()
+            }
+            .keylineTint(.red)
+        }
+        .supplementalActivityFamilies([.small])
+    }
+}

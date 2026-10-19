@@ -1,0 +1,168 @@
+//
+//  MainView.swift
+//  CSE
+//
+//  Created by Cizzuk on 2024/03/13.
+//
+
+import SwiftUI
+
+struct MainView: View {
+    // Load app settings
+    @AppStorage("useDefaultCSE", store: userDefaults) private var useDefaultCSE: Bool = true
+    @AppStorage("usePrivateCSE", store: userDefaults) private var usePrivateCSE: Bool = false
+    @AppStorage("useQuickCSE", store: userDefaults) private var useQuickCSE: Bool = false
+    @AppStorage("useEmojiSearch", store: userDefaults) private var useEmojiSearch: Bool = false
+    
+    // Sheets
+    @AppStorage("needFirstTutorial", store: userDefaults) private var needFirstTutorial: Bool = true
+    @State private var openSafariTutorialView: Bool = false
+    
+    // Navigation
+    @State private var selection: NavigationItem?
+    private enum NavigationItem: String, Hashable {
+        case defaultSE, privateSE, quickSE, emojiSearch
+        case about, cseContentBlocker, backup, changeIcon, advancedSettings
+    }
+    
+    var body: some View {
+        NavigationSplitView(columnVisibility: .constant(.doubleColumn)) {
+            List(selection: $selection) {
+                // Default SE Settings
+                Section {
+                    NavigationLink(value: NavigationItem.defaultSE) {
+                        HStack {
+                            UITemplates.IconLabel(icon: "magnifyingglass", text: "Default Search Engine")
+                            Spacer()
+                            Text(useDefaultCSE ? "On" : "Off")
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                    
+                    // Private SE Settings
+                    NavigationLink(value: NavigationItem.privateSE) {
+                        HStack {
+                            UITemplates.IconLabel(icon: "hand.raised", text: "Private Search Engine")
+                            Spacer()
+                            Text(usePrivateCSE ? "On" : "Off")
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                    
+                    // Quick SE Settings
+                    NavigationLink(value: NavigationItem.quickSE) {
+                        HStack {
+                            UITemplates.IconLabel(icon: "hare", text: "Quick Search")
+                            Spacer()
+                            Text(useQuickCSE ? "On" : "Off")
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                    
+                    
+                    // Emoji Search Setting
+                    NavigationLink(value: NavigationItem.emojiSearch) {
+                        HStack {
+                            UITemplates.IconLabel(icon: "face.smiling", text: "Emoji Search")
+                            Spacer()
+                            Text(useEmojiSearch ? "On" : "Off")
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                }
+                
+                // Show Safari Settings Tutorial Button
+                Section {
+                    Button(action: { openSafariTutorialView = true }) {
+                        VStack(alignment: .leading) {
+                            UITemplates.IconLabel(icon: "safari", text: "Safari Settings")
+                                #if !os(visionOS)
+                                .foregroundStyle(.accent)
+                                #endif
+                            Spacer().frame(height: 4)
+                            Text("If you change your Safari settings or CSE does not work properly, you may need to redo this tutorial.")
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                        }
+                    }
+                    #if !os(visionOS)
+                    .foregroundStyle(Color(.label))
+                    #endif
+                }
+                
+                Section {
+                    NavigationLink(value: NavigationItem.about) {
+                        UITemplates.IconLabel(icon: "info.circle", text: "About")
+                    }
+                    
+                    NavigationLink(value: NavigationItem.cseContentBlocker) {
+                        UITemplates.IconLabel(icon: "shield.lefthalf.filled", text: "CSE Content Blocker")
+                    }
+                    
+                    NavigationLink(value: NavigationItem.backup) {
+                        UITemplates.IconLabel(icon: "arrow.counterclockwise", text: "Backup & Restore")
+                    }
+                    
+                    if UIApplication.shared.supportsAlternateIcons {
+                        NavigationLink(value: NavigationItem.changeIcon) {
+                            UITemplates.IconLabel(icon: "app.dashed", text: "Change App Icon")
+                        }
+                    }
+                    
+                    NavigationLink(value: NavigationItem.advancedSettings) {
+                        UITemplates.IconLabel(icon: "gearshape.2", text: "Advanced Settings")
+                    }
+                }
+            }
+            .navigationTitle("CSE Settings")
+            #if os(visionOS)
+            .background(.thickMaterial)
+            #endif
+        } detail: {
+            switch selection {
+            case .defaultSE: EditSEView(type: .defaultCSE)
+            case .privateSE: EditSEView(type: .privateCSE)
+            case .quickSE: QuickSEListView()
+            case .emojiSearch: EmojiSearchView()
+            case .about: AboutView()
+            case .cseContentBlocker: CSEContentBlockerView()
+            case .backup: BackupView.BackupView()
+            case .changeIcon: ChangeIconView()
+            case .advancedSettings: AdvSettingView()
+            case .none: EmptyView()
+            }
+        }
+        .navigationSplitViewStyle(.balanced)
+        .listStyleFallback()
+        // Tutorial sheets
+        .sheet(isPresented : $needFirstTutorial) {
+            NavigationStack {
+                TutorialViews.WelcomeView(isOpenSheet: $needFirstTutorial)
+            }
+        }
+        .sheet(isPresented: $openSafariTutorialView) {
+            NavigationStack {
+                TutorialViews.SafariSEView(isOpenSheet: $openSafariTutorialView)
+            }
+        }
+        .onOpenURL { url in
+            // Handle URL Scheme
+            if let host = url.host {
+                switch host {
+                case "firstTutorial":
+                    needFirstTutorial = true
+                case "safariSettings":
+                    openSafariTutorialView = true
+                case "home":
+                    selection = nil
+                default:
+                    selection = NavigationItem(rawValue: host)
+                }
+            }
+        }
+    }
+}

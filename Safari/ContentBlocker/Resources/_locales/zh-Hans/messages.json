@@ -1,0 +1,6 @@
+{
+    "extension_description": {
+        "message": "阻止 Safari 的搜索引擎以防止搜索查询泄露。",
+        "description": "Description of what the extension does."
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "originHash" : "330c023b73339fc69518a258914bcebc5f4d54bfe6d73422e1fb62401cd0dd73",
+  "pins" : [
+    {
+      "identity" : "swift-merge-codable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Cizzuk/swift-merge-codable",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8fadd7727a9b068b4cb34e927dc10dfd705951f8"
+      }
+    }
+  ],
+  "version" : 3
+}
